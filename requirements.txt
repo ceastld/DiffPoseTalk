@@ -1,0 +1,10 @@
+librosa
+matplotlib
+transformers
+pyrender
+chumpy
+
+# for debug
+tensorboardX
+colorama
+lmdb

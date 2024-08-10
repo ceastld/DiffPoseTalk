@@ -158,3 +158,16 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
+models/data/FLAME_masks/FLAME_masks.gif
+models/data/FLAME_masks/readme
+models/data/FLAME2020/female_model.pkl
+models/data/FLAME2020/generic_model.pkl
+models/data/FLAME2020/male_model.pkl
+models/data/FLAME2020/Readme.pdf
+models/data/FLAME_masks.pkl
+models/data/FLAME_masks.zip
+models/data/FLAME2020.zip
+models/data/landmark_embedding.npy
+experiments/*
+datasets/HDTF_TFHP/*
+demo/output/*
