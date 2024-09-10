@@ -1,5 +1,4 @@
 from .smplx.body_models import SMPLX
-from .smplx_driver import SMPLXDriver
 
 
 import os

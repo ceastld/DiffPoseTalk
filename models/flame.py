@@ -22,8 +22,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-# from .lbs import lbs, batch_rodrigues, vertices2landmarks, rot_mat_to_euler
-from smplx.lbs import lbs, batch_rodrigues, vertices2landmarks, rot_mat_to_euler
+from .lbs import lbs, batch_rodrigues, vertices2landmarks, rot_mat_to_euler
+# from .smplx.lbs import lbs, batch_rodrigues, vertices2landmarks, rot_mat_to_euler
 
 def to_tensor(array, dtype=torch.float32):
     if 'torch.tensor' not in str(type(array)):

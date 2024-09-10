@@ -200,13 +200,18 @@ class MeshRenderer_Cuda(nn.Module):
             normals = dr.interpolate(vertices_normals, rast_out, tris[0])[0]
             normals = torch.nn.functional.normalize(normals, dim=-1) 
             vis_img = self.compute_shaded_color(torch.ones_like(normals)*.6, normals, normals.new_zeros(normals.shape[0], 27), img_size_new)
+            
+            vis_img = vis_img[:, :img_size[0], :img_size[1]]
             if img_ori is not None:
                 mask =  (rast_out[..., 3] > 0).float().unsqueeze(-1)
-                vis_img = vis_img[:, :img_size[0], :img_size[1]]
                 mask = mask[:, :img_size[0], :img_size[1]]
                 vis_img = (1 - mask) * img_ori + mask * (vis_img*.6 + img_ori*.4)
             else:
-                vis_img = vis_img[:, :img_size[0], :img_size[1]]
+                # unique_values = torch.unique(rast_out)
+                # print("Unique values in rast_out:", unique_values)
+                # vis_img = (1 - mask) * torch.ones_like(vis_img) + mask * vis_img
+                pass
+
         if not return_rast_out:
             return torch.clamp((vis_img*255.).detach().byte(), 0, 255).cpu().numpy()
         else:

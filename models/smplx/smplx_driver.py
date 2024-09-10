@@ -9,7 +9,7 @@ from tqdm import tqdm
 from pathlib import Path
 from psbody.mesh import Mesh
 from pytorch3d.transforms import so3_exp_map
-from smplx import SMPLX
+from . import SMPLX
 from data.utils import coef_to_smplx_dict, smplx_dict_to_coef, smplx_dict_to_tensor
 from render_utils.render_nvdiff import MeshRenderer_Cuda
 from utils.media import convert_video
