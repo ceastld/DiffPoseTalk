@@ -4,7 +4,12 @@ transformers
 pyrender
 chumpy
 
+# dataset
+lmdb
+
 # for debug
 tensorboardX
 colorama
-lmdb
+ipykernel
+moviepy
+natsort
