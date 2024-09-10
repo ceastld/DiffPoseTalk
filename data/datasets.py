@@ -95,11 +95,13 @@ class LmdbDataset(data.Dataset):
                 assert sr == 16000, f'Invalid sampling rate: {sr}'
                 audio_clip = audio_clip.squeeze()
                 audio.append(audio_clip[round(start_idx * self.audio_unit):round(end_idx * self.audio_unit)])
+                # print(f"start_idx: {start_idx}, end_idx: {end_idx}, audio_clip_shape: {audio_clip.shape}")
+                # print(f"Audio segment length: {audio_clip[round(start_idx * self.audio_unit):round(end_idx * self.audio_unit)].shape[0]}")
 
         coef_dict = {k: torch.tensor(np.concatenate(coef_dict[k], axis=0)) for k in coef_keys}
         assert coef_dict['exp'].shape[0] == self.coef_total_len, f'Invalid coef length: {coef_dict["exp"].shape[0]}'
         audio = torch.cat(audio, dim=0)
-        assert audio.shape[0] == self.coef_total_len * self.audio_unit, f'Invalid audio length: {audio.shape[0]}'
+        assert audio.shape[0] == self.coef_total_len * self.audio_unit, f'Invalid audio length: {audio.shape[0]}, Key: {self.entries[index]}'
         audio_mean = audio.mean()
         audio_std = audio.std()
         audio = (audio - audio_mean) / (audio_std + 1e-5)
